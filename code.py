@@ -1,30 +1,32 @@
 from storage import getmount
-
-from kmk.kmk_keyboard import KMKKeyboard # as _KMKKeyboard
-from kmk.modules.split import Split, SplitSide
-from kmk.scanners import DiodeOrientation
+from kb import KMKKeyboard
 from kmk.keys import KC
-import board
-
-# class KMKKeyboard(_KMKKeyboard):
+from kmk.modules.split import Split
 
 keyboard = KMKKeyboard()
-keyboard.col_pins = (board.GP28, board.GP27, board.GP26, board.GP22, board.GP20, board.GP23, board.GP21)
-keyboard.row_pins = (board.GP4,board.GP5,board.GP6,board.GP7,board.GP8,board.GP9)
-keyboard.diode_orientation = DiodeOrientation.COL2ROW
-#split = Split()
-#split.data_pin = board.GP3
-#keyboard.modules.append(split)
+
+split = Split(
+    data_pin  = keyboard.data_pin,
+    use_pio   = True,
+    uart_flip = True
+    # data_pin2=,
+)
+keyboard.modules.append(split)
+
+# fmt:off
 keyboard.keymap = [[
-    KC.NO,		KC.N6,		KC.N7,		KC.N8,		KC.N9,		KC.N0,		KC.MINUS,
-    KC.NO,		KC.F,		KC.G,		KC.C,		KC.R,		KC.L,		KC.SLASH,
-    KC.NO,		KC.D,		KC.H,		KC.T,		KC.N,		KC.S,		KC.BSLASH,
-    KC.NO,		KC.B,		KC.M,		KC.W,		KC.V,		KC.Z,		KC.LSHIFT,
-    KC.NO,		KC.SPACE,	KC.ENTER,	KC.UP,		KC.DOWN,	KC.LBRACKET,	KC.RBRACKET,
-    KC.NO,		KC.LCTRL,	KC.LCMD,	KC.PGUP,	KC.PGDOWN,	KC.N5,		KC.N6,
-]]
+    KC.EQUAL,    KC.N1,     KC.N2,    KC.N3,    KC.N4,  KC.N5,                                    KC.N6,  KC.N7,  KC.N8,  KC.N9,   KC.N0,       KC.MINUS,
+    KC.TAB,      KC.QUOTE,  KC.COMMA, KC.DOT,   KC.P,   KC.Y,                                     KC.F,   KC.G,   KC.C,   KC.R,    KC.L,        KC.SLASH,
+    KC.CAPSLOCK, KC.A,      KC.O,     KC.E,     KC.U,   KC.I,                                     KC.D,   KC.H,   KC.T,   KC.N,    KC.S,        KC.BSLASH,
+    KC.LSHIFT,   KC.SCOLON, KC.Q,     KC.J,     KC.K,   KC.X,                                     KC.B,   KC.M,   KC.W,   KC.V,    KC.Z,        KC.RSHIFT,
+    KC.GRAVE,    KC.ESC,    KC.LEFT,  KC.RIGHT,                                                                   KC.UP,  KC.DOWN, KC.LBRACKET, KC.RBRACKET,
+                                                KC.BSPACE, KC.LCTRL, KC.HOME,     KC.PGUP,   KC.RCTRL, KC.SPACE,
+                                                KC.LALT,   KC.DELETE, KC.END,     KC.PGDOWN, KC.RCMD,  KC.ENTER,
+]]       
+# fmt:on
+
+keyboard.debug_enabled = False
 
 if __name__ == '__main__':
     print("Keyboard ",getmount("/").label)
     keyboard.go()
-    
