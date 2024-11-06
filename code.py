@@ -28,8 +28,8 @@ keyboard.keymap = [
     GO_LOWER,    KC.A,      KC.O,     KC.E,     KC.U,   KC.I,                                     KC.D,   KC.H,   KC.T,   KC.N,    KC.S,        KC.BSLASH,
     KC.LSHIFT,   KC.SCOLON, KC.Q,     KC.J,     KC.K,   KC.X,                                     KC.B,   KC.M,   KC.W,   KC.V,    KC.Z,        KC.RSHIFT,
     KC.GRAVE,    KC.ESC,    KC.LEFT,  KC.RIGHT,                                                                   KC.UP,  KC.DOWN, KC.LBRACKET, KC.RBRACKET,
-                                                KC.BSPACE, KC.LCTRL,  KC.HOME,    KC.PGUP,   KC.RCTRL, KC.SPACE,
-                                                KC.LALT,   KC.DELETE, KC.END,     KC.PGDOWN, KC.RCMD,  KC.ENTER,
+                                                KC.BSPACE, KC.LCTRL,  KC.HOME,    KC.PGUP,   KC.RCTRL, KC.ENTER,
+                                                KC.LALT,   KC.DELETE, KC.END,     KC.PGDOWN, KC.RCMD,  KC.SPACE,
     ],
     # Function Layer
     [
